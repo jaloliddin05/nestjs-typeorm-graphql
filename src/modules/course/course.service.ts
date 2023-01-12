@@ -18,7 +18,9 @@ export class CourseService {
 
   async getOne(id: string) {
     return await this.courseRepository.findOne({
-      relations: {},
+      relations: {
+        students: true,
+      },
       where: {
         id,
       },
@@ -33,11 +35,13 @@ export class CourseService {
   }
 
   async delete(id: string) {
+    const course = await this.getOne(id);
     await this.courseRepository.delete({ id });
+    return course;
   }
 
-  async update(id: string, data: UpdateCourseInput) {
-    const course = await this.courseRepository.save({ ...data, id });
+  async update(data: UpdateCourseInput) {
+    const course = await this.courseRepository.save({ ...data });
     return course;
   }
 }

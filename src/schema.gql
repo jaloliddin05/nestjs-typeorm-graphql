@@ -2,21 +2,36 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Student {
+  id: String!
+  name: String!
+  age: Float!
+  courses: [Course!]
+}
+
 type Course {
   id: String!
   title: String!
   price: String!
+  students: [Student!]
 }
 
 type Query {
   findAllCourses: [Course!]!
   findOneCourse(id: String!): Course!
+  findAllStudents: [Student!]!
+  findOneStudent(id: String!): Student!
 }
 
 type Mutation {
   createCourse(CreateCourseInput: CreateCourseInput!): Course!
   updateCourse(UpdateCourseInput: UpdateCourseInput!): Course!
   removeCourse(id: String!): Course!
+  createStudent(CreateStudentInput: CreateStudentInput!): Student!
+  updateStudent(UpdateStudentInput: UpdateStudentInput!): Student!
+  removeStudent(id: String!): Student!
+  addStudentToCourse(addStudentToCourse: StudentCourseInput!): Student!
+  removeStudentFromCourse(removeStudentFromCourse: StudentCourseInput!): Student!
 }
 
 input CreateCourseInput {
@@ -28,4 +43,20 @@ input UpdateCourseInput {
   id: String!
   title: String!
   price: String!
+}
+
+input CreateStudentInput {
+  name: String!
+  age: Float!
+}
+
+input UpdateStudentInput {
+  id: String!
+  name: String!
+  age: Float!
+}
+
+input StudentCourseInput {
+  studentId: String!
+  courseId: String!
 }
