@@ -7,6 +7,7 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { join } from 'path';
 
 import { CourseModule } from './modules/course/course.module';
+import { StudentModule } from './modules/student/student.module';
 import configuration from './config';
 
 @Module({
@@ -27,6 +28,7 @@ import configuration from './config';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     CourseModule,
+    StudentModule,
   ],
 })
 export class AppModule {}
