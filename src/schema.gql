@@ -1,0 +1,31 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Course {
+  id: String!
+  title: String!
+  price: String!
+}
+
+type Query {
+  findAllCourses: [Course!]!
+  findOneCourse(id: String!): Course!
+}
+
+type Mutation {
+  createCourse(CreateCourseInput: CreateCourseInput!): Course!
+  updateCourse(UpdateCourseInput: UpdateCourseInput!): Course!
+  removeCourse(id: String!): Course!
+}
+
+input CreateCourseInput {
+  title: String!
+  price: String!
+}
+
+input UpdateCourseInput {
+  id: String!
+  title: String!
+  price: String!
+}
